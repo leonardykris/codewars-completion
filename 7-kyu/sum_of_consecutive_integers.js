@@ -15,4 +15,43 @@
 
   In terms of series with even number of elements like 4, say [3, 4, 5, 6] with a sum of 18, the mean would be 18 / 4 = 4.5. In this occasion, since floating numbers are not permitted, the closest numbers by rounding the mean up and down will be 4 and 5, making the rest of the elements -1/+1 of these elements.
 
+  Think of n, the index, as the step from x, because n < x (confirmed)
+  [1, 2, 3, 4, 5]
+  x = 5
+  m = 3 (p = 2)
+  n = 3
+  p = 4
+
+  You have an option to construct the array, but in this case we do not necessarily need it.
+
 */
+
+function position(x, y, n) {
+  var mean = y / x;
+  var modifier = Math.floor(x / 2);
+  if (x % 2 == 0) {
+    if (n < modifier) {
+      return Math.ceil(mean + (n - modifier));
+    } else {
+      return Math.ceil(mean + (n - modifier));
+    }
+  } else {
+    if (n <= modifier) {
+      return mean + (n - modifier);
+    } else {
+      return mean + (n - modifier);
+    }
+  }
+}
+
+// Minimized
+function position(x, y, n) {
+  if (x % 2 == 0) return Math.ceil((y / x) + n - Math.floor(x / 2));
+  else return (y / x) + n - Math.floor(x / 2);
+}
+
+// Best Practice
+// WHOA
+function position(x, y, n) {
+  return y / x - (x - 1) / 2 + n;
+}
