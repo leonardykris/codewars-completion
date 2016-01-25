@@ -104,6 +104,8 @@
 
 // 20 + 28 = 48
 
+// If we use this logic instead, then, it means we have to find way to do it recursively by forming different arrays each time
+
 function total(array) {
   var temp = [];
   var prev;
