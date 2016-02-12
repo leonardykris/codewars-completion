@@ -51,7 +51,7 @@ function toCurrency(price){
 // Also a good one:
 
 function toCurrency(price) {
-  return ("" + price).split('').reverse().map(function(v,i) {
-    return i % 3 == 0 && i > 0 ? v + ',' : v;
+  return ("" + price).split('').reverse().map(function(currentValue, index) {
+    return index % 3 === 0 && index > 0 ? currentValue + ',' : currentValue;
   }).reverse().join('');
 }
