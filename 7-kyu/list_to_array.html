@@ -1,0 +1,19 @@
+<script type="text/javascript">
+  function listToArray(list) {
+    // console.log(list);
+    // result.push(list.value, list.next.value, list.next.next.value);
+    // obviously can't use reduce, it's Array function only
+    var result = [];
+    result.push(list.value);
+    if (list.next !== null) {
+      // if the value of the next property in this object/list is not null, then I want the value of the next object to be pushed to the topmost array, result, and I also want the next property of that object
+      // result.push(listToArray(list.next));
+      return result.concat(listToArray(list.next));
+    } else {
+      return result;
+    }
+    // the last return will have to return an instance of an Array
+  }
+
+  console.log(listToArray({value: 1, next: {value: 2, next: {value: 3, next: null}}}));
+</script>
