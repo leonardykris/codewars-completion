@@ -29,7 +29,7 @@
 function position(x, y, n) {
   var mean = y / x;
   var modifier = Math.floor(x / 2);
-  if (x % 2 == 0) {
+  if (x % 2 === 0) {
     if (n < modifier) {
       return Math.ceil(mean + (n - modifier));
     } else {
