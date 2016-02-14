@@ -106,11 +106,34 @@
 
 // If we use this logic instead, then, it means we have to find way to do it recursively by forming different arrays each time
 
+// function total(array) {
+//   var temp = [];
+//   var prev;
+//   return array.map(function(obj){
+//     prev = current;
+//     temp.push(previous + current);
+//   }) * 2 - array[0] - array[array.length-1];
+// }
+
 function total(array) {
-  var temp = [];
-  var prev;
-  return array.map(function(obj){
-    prev = current;
-    temp.push(previous + current);
-  }) * 2 - array[0] - array[array.length-1];
+  var newArray = [];
+  if (array.length > 1) {
+    for (var i = 0; i < array.length - 1; i++){
+      newArray.push(array[i] + array[i + 1]);
+    }
+    return total(newArray);
+  } else {
+    return array[0];
+  }
+}
+
+// Best practice with reduce
+function total(arr){
+  return arr.length > 1 ? total(arr.reduce((a, v, i, arr) => i ? a.concat(v + arr[i - 1]) : a, [])) : arr[0];
+}
+
+// Also
+function total(arr) {
+  while (arr.length>1) arr=arr.slice(1).map((x,i)=>x+arr[i]);
+  return arr[0];
 }
